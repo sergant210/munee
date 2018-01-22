@@ -118,7 +118,7 @@ class Css extends Type
      * Check if the content is serialized.  If it is, we have LESS cache
      * and we want to return whats in the `compiled` array key
      *
-     * @param string $content
+     * @param array $content
      *
      * @return string
      */
@@ -162,6 +162,7 @@ class Css extends Type
      * @param string $originalFile
      *
      * @return string
+     * @throws CompilationException
      */
     protected function fixRelativePaths($content, $originalFile)
     {
