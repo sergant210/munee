@@ -103,12 +103,8 @@ class Css extends Type
             }
 
             $content = compact('compiled');
-            $parsedFiles = $scss->getParsedFiles();
-            $parsedFiles[] = $originalFile;
-            foreach ($parsedFiles as $file) {
-                $content['files'][$file] = filemtime($file);
-            }
-
+            $content['files'] = $scss->getParsedFiles();
+            $content['files'][$originalFile] = filemtime($originalFile);
             $content['compiled'] = $this->fixRelativePaths($content['compiled'], $originalFile);
             file_put_contents($cacheFile, serialize($content));
         } else {
